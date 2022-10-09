@@ -57,8 +57,7 @@ for database in databases:
     print('[INFO] Processing table %s.%s (number of version: %s)' % (database, table, numVersions))
 
     if numVersions > VERSIONS_TO_RETAIN:
-      versionsByRecency = versionIds[::-1] # reverse
-      versionsToDelete = versionsByRecency[VERSIONS_TO_RETAIN:]
+      versionsToDelete = versionIds[VERSIONS_TO_RETAIN:]
 
       while nextBatchOfVersionIdsToDelete := versionsToDelete[:100]:
         if DRY_RUN:
